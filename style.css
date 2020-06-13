@@ -1,0 +1,183 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: radial-gradient(rgb(119, 187, 119), rgb(3, 160, 3));
+    /* height: 100vh; */
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 
+h1 {
+    color: #fff;
+    font-size: 4rem;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+} */
+
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    align-content: center;
+    min-height: 100vh;
+    width: 60%;
+    margin: auto;
+    perspective: 1000px;
+    padding-bottom: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 65px;
+    color: #fff;
+    height: 10vh;
+}
+
+#timer {
+    color: yellow;
+}
+
+.card {
+    width: 200px;
+    height: 150px;
+    position: relative;
+    cursor: pointer;
+}
+
+.card-both {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: all 1s ease;
+    border: 2px solid white;
+}
+
+.card-back {
+    background: red;
+    transform: rotateY(0);
+}
+
+.card.show .card-back {
+    transform: rotateY(180deg);
+}
+
+.card-front {
+    transform: rotateY(-180deg);
+}
+
+.card.match .card-front {
+    animation: borderz 1s linear infinite 500ms;
+}
+
+.card.show .card-front {
+    transform: rotateY(0);
+} 
+
+.start-game {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    min-height: 100%;
+    margin: auto;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 8rem;
+    padding: 2rem 0;
+    color: white;
+    background: black;
+    opacity: 0.9;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.start-game.show {
+    display: flex;
+}
+
+.btn {
+    margin: 5rem;
+    padding: 1.2rem 5rem;
+    font-size: 1.8rem;
+    border-radius: 3px;
+    background: rgb(202, 202, 7);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@keyframes borderz {
+    0% {
+        border: 2px solid red;
+    }
+    50% {
+        border: 2px solid yellow;
+    }
+    100% {
+        border: 2px solid blue;
+    }
+}
+
+@media(max-width: 900px) {
+    .game-container {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+    }
+    .card {
+        width: 180px;
+        height: 120px;
+    }
+    
+    .title {
+        font-size: 3rem;
+        padding-top: 1.5rem;
+    }
+    .start-game {
+        font-size: 6rem;
+        text-align: center;
+    }
+}
+
+@media(max-width: 670px) {
+    .card {
+        width: 140px;
+        height: 100px;
+    }
+
+    .title {
+        height: 12vh;
+        font-size: 2rem;
+    }
+    .start-game {
+        font-size: 4.5rem;
+    } 
+}
+
+@media(max-width: 485px) {
+    .btn {
+        padding: 1rem 4rem;
+        margin: 4rem;
+    } 
+    .card {
+        width: 105px;
+        height: 80px; 
+    }
+}
