@@ -182,7 +182,7 @@ h1 {
     }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 340px) {
   .card {
     width: 97px;
     height: 75px;
